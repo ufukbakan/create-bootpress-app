@@ -7,6 +7,18 @@ if (majorNodeVersion < 10) {
     process.exit(1);
 }
 
+const { Command } = require('commander');
+const program = new Command();
+
+program
+    .name("create-bootpress-app")
+    .description("CLI tool to create a bootpress application")
+    .version("1.0.0");
+
+program.argument("<project_name>", "Project name");
+program.option("-l, --language <lang>", "Language");
+program.parse();
+
 const { init } = require('./createBootpressApp');
 
-init();
+init(program.args[0], program.opts());

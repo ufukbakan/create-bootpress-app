@@ -13,6 +13,7 @@
   "dependencies": {
     "bootpress": "^5.0.1",
     "express": "^4.18.2",
+    "generic-import": "^2.0.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
