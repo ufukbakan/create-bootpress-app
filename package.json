@@ -1,0 +1,26 @@
+{
+  "name": "create-bootpress-app",
+  "version": "0.0.1",
+  "description": "CLI tool to create a bootpress app",
+  "main": "index.js",
+  "bin": {
+    "create-bootpress-app": "index.js"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ufuk Bakan",
+  "license": "ISC",
+  "files": [
+    "index.js",
+    "createBootpressApp.js"
+  ],
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0"
+  }
+}
