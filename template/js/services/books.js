@@ -1,5 +1,5 @@
 import { HttpError, HttpResponse, RestService } from "bootpress";
-import { asInteger, asSchema, getOrThrow, schema } from "bootpress/helpers";
+import { asInteger, asSchema, getOrThrow, schema } from "bootpress/helpers/index";
 
 class BookService {
     #books = [ { name: "Kaşağı", year: 1919 }, { name: "Harry Potter", year: 1997 }, { name: "Don Quixote", year: 1605 } ];
