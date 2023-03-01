@@ -1,6 +1,7 @@
 import { RestService } from "bootpress";
-import { asInteger, getOrThrow } from "bootpress/helpers";
+import { as, asInteger, getOrThrow } from "bootpress/helpers";
 import { HttpError, HttpResponse } from "bootpress/types";
+import { AddBookRequestDTO } from "./DTOs";
 
 class BookService {
     #books = [ { name: "Kaşağı", year: 1919 }, { name: "Harry Potter", year: 1997 }, { name: "Don Quixote", year: 1605 } ];
@@ -16,8 +17,13 @@ class BookService {
     }
 
     add(body) {
-        const defaultValues = { year: 2023 };
-        this.#books.push({...defaultValues, ...body});
+        const parsedBody = as(body, AddBookRequestDTO);
+        // parsedBody now has intellisense fields { name, year }
+        // also it returns a Http Error if body doesn't fit schema
+        this.#books.push({
+            name: parsedBody.name,
+            year: parsedBody.year ?? 2023
+        });
         return new HttpResponse(201, "Added book");
     }
 
