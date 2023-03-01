@@ -99,7 +99,7 @@ function createProjectTemplate({ projectName, options, lang }) {
     writeFileSync(packageJson, currentContent.toString("utf-8").replace("$project_name$", projectName), { encoding: "utf-8" });
     log("\nYour project is created now, but dependencies is not installed. To install them:");
     log(colors.green(`cd ./${projectName}`));
-    log(`${colors.red("npm install")} / ${colors.cyan("yarn")} ${colors.yellow(`pnpm install`)}`);
+    log(`${colors.red("npm install")} / ${colors.cyan("yarn")} / ${colors.yellow(`pnpm install`)}`);
 }
 
 const ignoreDirs = ["node_modules", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"];
