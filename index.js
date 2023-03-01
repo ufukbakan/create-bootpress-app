@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const process = require("process");
 
 const majorNodeVersion = process.versions.node.split('.')[0];
