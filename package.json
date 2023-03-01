@@ -1,11 +1,11 @@
 {
   "name": "create-bootpress-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "CLI tool to create a bootpress app",
   "main": "index.js",
   "type": "commonjs",
   "bin": {
-    "create-bootpress-app": "index.js"
+    "create-bootpress-app": "node ."
   },
   "engines": {
     "node": ">=10"
