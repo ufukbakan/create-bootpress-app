@@ -1,8 +1,9 @@
 {
   "name": "create-bootpress-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "CLI tool to create a bootpress app",
   "main": "index.js",
+  "type": "commonjs",
   "bin": {
     "create-bootpress-app": "index.js"
   },
@@ -17,11 +18,15 @@
   "license": "ISC",
   "files": [
     "index.js",
-    "createBootpressApp.js"
+    "createBootpressApp.js",
+    "template"
   ],
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^10.0.0",
     "keypress": "^0.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0"
   }
 }

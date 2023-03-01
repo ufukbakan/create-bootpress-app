@@ -1,3 +1,4 @@
+const process = require("process");
 const colors = require("colors");
 const { existsSync, mkdirSync, copyFileSync, readdirSync, statSync, readFileSync, writeFileSync } = require("fs");
 const keypress = require("keypress");
@@ -36,12 +37,12 @@ function pickLanguage({ projectName, options }) {
         log("Pick a language then press enter/space");
         let selected = 0;
         let languages = ["Javascript", "Typescript"];
-        function printLanguages() {
+        const printLanguages = () => {
             for (let i = 0; i < languages.length; i++) {
                 log(`[${selected == i ? 'X' : ' '}] ${languages[i]}`);
             }
         }
-        function clearPrintedLangs() {
+        const clearPrintedLangs = () => {
             for (let i = 0; i < languages.length; i++) {
                 process.stdout.moveCursor(0, -1);
                 process.stdout.clearLine(-1);
@@ -77,6 +78,7 @@ function pickLanguage({ projectName, options }) {
     }
 }
 
+// eslint-disable-next-line no-unused-vars
 function createProjectTemplate({ projectName, options, lang }) {
     lang = lang.toLowerCase();
     console.log("Project name: " + projectName);
@@ -93,7 +95,7 @@ function createProjectTemplate({ projectName, options, lang }) {
         throw new Error("Unsupported language");
     }
 
-    copyContent(template_dir, projectFolder, projectName);
+    copyContent(template_dir, projectFolder);
     const packageJson = join(projectFolder, "package.json");
     const currentContent = readFileSync(packageJson);
     writeFileSync(packageJson, currentContent.toString("utf-8").replace("$project_name$", projectName), { encoding: "utf-8" });
@@ -101,7 +103,7 @@ function createProjectTemplate({ projectName, options, lang }) {
 
 const ignoreDirs = ["node_modules", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"];
 
-function copyContent(from, to, projectName) {
+function copyContent(from, to) {
     for (const dir of readdirSync(from)) {
         const source = join(from, dir);
         const target = join(to, dir);
