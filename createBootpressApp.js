@@ -7,7 +7,7 @@ const log = console.log;
 const bl = colors.bgBlack;
 
 const script_dir = require.main.path;
-console.log(`script is running at ${script_dir}`)
+// log(`script is running at ${script_dir}`)
 
 const langMap = new Map(Object.entries(
     {
@@ -81,8 +81,6 @@ function pickLanguage({ projectName, options }) {
 // eslint-disable-next-line no-unused-vars
 function createProjectTemplate({ projectName, options, lang }) {
     lang = lang.toLowerCase();
-    console.log("Project name: " + projectName);
-    console.log("Selected language: " + lang);
     const projectFolder = join(process.cwd(), projectName);
     mkdirSync(projectFolder);
     let template_dir;
@@ -99,6 +97,9 @@ function createProjectTemplate({ projectName, options, lang }) {
     const packageJson = join(projectFolder, "package.json");
     const currentContent = readFileSync(packageJson);
     writeFileSync(packageJson, currentContent.toString("utf-8").replace("$project_name$", projectName), { encoding: "utf-8" });
+    log("\nYour project is created now, but dependencies is not installed. To install them:");
+    log(colors.green(`cd ./${projectName}`));
+    log(`${colors.red("npm install")} / ${colors.cyan("yarn")} ${colors.yellow(`pnpm install`)}`);
 }
 
 const ignoreDirs = ["node_modules", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"];
