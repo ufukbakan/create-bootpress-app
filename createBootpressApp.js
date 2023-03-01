@@ -1,9 +1,12 @@
 const colors = require("colors");
-const { existsSync, mkdir, mkdirSync } = require("fs");
+const { existsSync, mkdirSync, copyFileSync, readdirSync, statSync, readFileSync, writeFileSync } = require("fs");
 const keypress = require("keypress");
 const { join } = require("path");
 const log = console.log;
 const bl = colors.bgBlack;
+
+const script_dir = require.main.path;
+console.log(`script is running at ${script_dir}`)
 
 const langMap = new Map(Object.entries(
     {
@@ -17,9 +20,9 @@ const langMap = new Map(Object.entries(
 function init(projectName, options) {
     const welcomeText = "Initializing " + bl.green("boot") + bl.red("press");
     log(welcomeText);
-    const projectDir = join(__dirname, projectName);
+    const projectDir = join(process.cwd(), projectName);
     if (existsSync(projectDir)) {
-        console.error(`${projectName} is already exists`);
+        console.error(`Destination ${projectName} is already exists`);
         process.exit(1);
     }
     pickLanguage({ projectName, options });
@@ -76,9 +79,41 @@ function pickLanguage({ projectName, options }) {
 
 function createProjectTemplate({ projectName, options, lang }) {
     lang = lang.toLowerCase();
-    console.log("project name: " + projectName);
-    console.log("options: " + JSON.stringify(options));
-    console.log("selected language: " + lang);
+    console.log("Project name: " + projectName);
+    console.log("Selected language: " + lang);
+    const projectFolder = join(process.cwd(), projectName);
+    mkdirSync(projectFolder);
+    let template_dir;
+    if (lang === "typescript") {
+        template_dir = join(script_dir, "template", "ts");
+    }
+    else if (lang == "javascript") {
+        template_dir = join(script_dir, "template", "js");
+    } else {
+        throw new Error("Unsupported language");
+    }
+
+    copyContent(template_dir, projectFolder, projectName);
+    const packageJson = join(projectFolder, "package.json");
+    const currentContent = readFileSync(packageJson);
+    writeFileSync(packageJson, currentContent.toString("utf-8").replace("$project_name$", projectName), { encoding: "utf-8" });
+}
+
+const ignoreDirs = ["node_modules", "package-lock.json", "yarn.lock", "pnpm-lock.yaml"];
+
+function copyContent(from, to, projectName) {
+    for (const dir of readdirSync(from)) {
+        const source = join(from, dir);
+        const target = join(to, dir);
+        if (ignoreDirs.includes(dir)) {
+            continue;
+        } else if (statSync(source).isDirectory()) {
+            mkdirSync(target);
+            copyContent(source, target);
+        } else {
+            copyFileSync(source, target);
+        }
+    }
 }
 
 module.exports = {
