@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootpress": "^6.0.1",
+    "bootpress": "^6.0.2",
     "express": "^4.18.2",
     "generic-import": "^3.0.3",
     "ts-node": "^10.9.1",
