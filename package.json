@@ -1,6 +1,6 @@
 {
   "name": "create-bootpress-app",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "CLI tool to create a bootpress app",
   "main": "index.js",
   "type": "commonjs",
