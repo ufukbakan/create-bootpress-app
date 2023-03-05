@@ -7,5 +7,5 @@ export type AddBookRequest = {
 
 export const AddBookRequestDTO = schema({
     "name": "string",
-    "year?": "number"
+    "year?": "integer"
 });

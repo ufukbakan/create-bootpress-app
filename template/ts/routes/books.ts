@@ -14,4 +14,4 @@ router.delete("/", PassQueries("name")(bookService.deleteByName));
 export {
     basepath,
     router
-}
+};
