@@ -12,7 +12,7 @@ class BookService {
 
     findByYear(yearInParam) {
         const year = as(yearInParam, "integer"); // throws an error if the year is not parsable to an integer
-        return getOrThrow(this.#books.find(book => book.year === year), new HttpError(404, `Couldn't find a book in year ${year}`))
+        return getOrThrow(this.#books.filter(book => book.year === year), new HttpError(404, `Couldn't find a book in year ${year}`))
     }
 
     add(body) {
