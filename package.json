@@ -1,6 +1,6 @@
 {
   "name": "create-bootpress-app",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "CLI tool to create a bootpress app",
   "main": "index.js",
   "type": "commonjs",
@@ -8,9 +8,13 @@
   "engines": {
     "node": ">=10"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufukbakan/create-bootpress-app"
+  },
   "keywords": [],
   "author": "Ufuk Bakan",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "index.js",
     "createBootpressApp.js",
