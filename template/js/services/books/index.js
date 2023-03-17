@@ -3,7 +3,7 @@ import { as, asStrict, getOrElse, getOrThrow } from "bootpress/helpers";
 import { HttpError, HttpResponse } from "bootpress/types";
 import { AddBookRequestDTO } from "./DTOs";
 
-class BookService {
+export class BookServiceImpl {
     #books = [ { name: "Kaşağı", year: 1919 }, { name: "Harry Potter", year: 1997 }, { name: "Don Quixote", year: 1605 } ];
 
     findAllBooks() {
@@ -27,6 +27,7 @@ class BookService {
     }
 
     deleteByName(name) {
+        name = getOrThrow(name, new HttpError(400, "Name is required"));
         const idx = this.#books.findIndex(book => book.name === name);
         if (idx > -1) {
             this.#books.splice(idx, 1);
@@ -37,4 +38,4 @@ class BookService {
     }
 }
 
-export const bookService = RestService(BookService);
+export const bookService = RestService(BookServiceImpl);

@@ -8,7 +8,7 @@ type Book = {
     year: number
 }
 
-class BookService {
+export class BookServiceImpl {
     #books: Book[] = [ { name: "Kaşağı", year: 1919 }, { name: "Harry Potter", year: 1997 }, { name: "Don Quixote", year: 1605 } ];
 
     findAllBooks() {
@@ -40,4 +40,4 @@ class BookService {
     }
 }
 
-export const bookService = RestService(BookService);
+export const bookService = RestService(BookServiceImpl);

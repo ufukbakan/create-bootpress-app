@@ -1,9 +1,9 @@
-import { RestService } from "bootpress";
+import { RestMethod } from "bootpress";
 
 class HomeService {
     getHomePage() {
-        return "hello world";
+        return RestMethod(() => "hello world");
     }
 }
 
-export const homeService = RestService(HomeService);
+export const homeService = new HomeService();

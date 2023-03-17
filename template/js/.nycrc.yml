@@ -1,0 +1,7 @@
+reporter:
+    - text
+    - html
+    # - json
+    # - text-summary
+
+all: true

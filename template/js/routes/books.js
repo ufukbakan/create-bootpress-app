@@ -1,7 +1,6 @@
 import { PassBody, PassParams, PassQueries } from "bootpress";
 import { Router } from "express";
 import { bookService } from "../services/books";
-import { AddBookRequestDTO } from "../services/books/DTOs";
 
 const basepath = "/books";
 const router = Router();
@@ -14,4 +13,4 @@ router.delete("/", PassQueries("name")(bookService.deleteByName));
 export {
     basepath,
     router
-}
+};
