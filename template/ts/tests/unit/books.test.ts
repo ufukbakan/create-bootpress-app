@@ -17,10 +17,11 @@ describe("BookServiceImpl", () => {
     });
 
     describe("#findByYear(yearInParam: string)", () => {
-        it("should return the correct book for a given year", () => {
-            const expectedBook = { name: "Don Quixote", year: 1605 };
-            const foundBook = bookService.findByYear("1605");
-            expect(foundBook).to.deep.equal(expectedBook);
+        it("should respond with an array of books released in a specified year", () => {
+            const expectedBooks = [{ name: "Don Quixote", year: 1605 }];
+            const foundBooks = bookService.findByYear("1605");
+            expect(foundBooks).to.be.an("array");
+            expect(foundBooks).to.deep.equal(expectedBooks);
         });
 
         it("should throw an HttpError with status code 404 when no book is found for a given year", () => {

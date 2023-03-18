@@ -29,7 +29,8 @@ export class BookServiceImpl {
         return new HttpResponse(201, book);
     }
 
-    deleteByName(name: string) {
+    deleteByName(name: String) {
+        name = getOrThrow(name, new HttpError(400, "Name is required"));
         const idx = this.#books.findIndex(book => book.name === name);
         if (idx > -1) {
             this.#books.splice(idx, 1);
