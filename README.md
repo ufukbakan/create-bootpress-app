@@ -16,3 +16,6 @@ npx create-bootpress-app your_project_name
 *npx create-bootpress-app -l ts*
 
 *npx create-bootpress-app --language javascript*
+
+## Known issues:
+- Coverage for Javascript template reports always 0%
