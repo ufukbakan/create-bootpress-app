@@ -13,9 +13,15 @@ npx create-bootpress-app your_project_name
 
 *Examples:*
 
-*npx create-bootpress-app -l ts*
+*```npx create-bootpress-app tsproject -l ts```*
 
-*npx create-bootpress-app --language javascript*
+*```pnpm create bootpress-app tsproject -l ts```*
+
+*```npx create-bootpress-app jsproject --language javascript```*
 
 ## Known issues:
 - Coverage for Javascript template reports always 0%
+
+## Release Notes 3.2.0:
+- Added unit & integration tests with mocha, chai & supertest
+- Added SWC support to JS template
