@@ -1,6 +1,6 @@
-import { HttpError, HttpResponse } from "bootpress/types";
+import { HttpError, HttpResponse } from "bootpress/types/index.js";
 import { expect } from "chai";
-import { BookServiceImpl } from "../../services/books";
+import { BookServiceImpl } from "../../services/books/index.js";
 // Convert lines above to import syntax
 
 describe('BookService', () => {

@@ -1,14 +1,21 @@
 {
     "jsc": {
       "parser": {
+        "extensions": [".js"],
         "syntax": "ecmascript",
-        "jsx": false,
         "dynamicImport": true,
+        "exportDefaultFrom": true,
+        "importMeta": true,
+        "classPrivateProperty": true,
+        "classProperty": true,
+        "nullishCoalescing": true,
+        "optionalChaining": true,
+        "decorator": true,
+        "jsx": false,
         "privateMethod": true,
         "decorators": true,
         "topLevelAwait": true,
         "preserveAllComments": false,
-        "target": "esnext",
         "externalHelpers": true
       }
     },

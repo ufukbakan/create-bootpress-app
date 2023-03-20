@@ -2,8 +2,5 @@ spec:
   - 'tests/**/*.test.*'
 extension:
   - 'js'
-# node-option:
-#   - 'experimental-specifier-resolution=node'
 require:
-  - "./reqtest.cjs"
-  - '@babel/register'
+  - "@swc/register"
