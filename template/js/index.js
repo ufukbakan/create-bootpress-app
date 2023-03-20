@@ -1,5 +1,13 @@
 import express from "express";
-import routes from "./routes/all_routes.js";
+import { dirname, resolve } from "path";
+import { cwd } from "process";
+import { fileURLToPath } from "url";
+import importer from "./importer.js";
+const routes = await importer(resolve(dirname(fileURLToPath(import.meta.url)), "./routes"));
+// console.log(cwd());
+// console.log(dirname(fileURLToPath(import.meta.url)));
+// const routes = await importer(cwd(), "./routes");
+console.log(routes);
 
 const app = express();
 app.use(express.json());

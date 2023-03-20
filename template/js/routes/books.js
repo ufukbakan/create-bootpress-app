@@ -1,6 +1,6 @@
 import { PassBody, PassParams, PassQueries } from "bootpress";
 import { Router } from "express";
-import { bookService } from "../services/books";
+import { bookService } from "../services/books/index.js";
 
 const basepath = "/books";
 const router = Router();

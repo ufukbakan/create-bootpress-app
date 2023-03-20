@@ -1,7 +1,7 @@
 import { RestService } from "bootpress";
-import { as, asStrict, getOrElse, getOrThrow } from "bootpress/helpers";
-import { HttpError, HttpResponse } from "bootpress/types";
-import { AddBookRequestDTO } from "./DTOs";
+import { as, asStrict, getOrElse, getOrThrow } from "bootpress/helpers/index.js";
+import { HttpError, HttpResponse } from "bootpress/types/index.js";
+import { AddBookRequestDTO } from "./DTOs.js";
 
 export class BookServiceImpl {
     #books = [ { name: "Kaşağı", year: 1919 }, { name: "Harry Potter", year: 1997 }, { name: "Don Quixote", year: 1605 } ];

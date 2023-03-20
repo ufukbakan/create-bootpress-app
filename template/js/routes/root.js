@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { homeService } from "../services/home";
+import { homeService } from "../services/home.js";
 
 const basepath = "/";
 const router = Router();

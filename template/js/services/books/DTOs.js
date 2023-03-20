@@ -1,4 +1,4 @@
-import { schema } from "bootpress/helpers";
+import { schema } from "bootpress/helpers/index.js";
 
 export const AddBookRequestDTO = schema({
     "name": "string",

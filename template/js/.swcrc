@@ -1,0 +1,16 @@
+{
+    "jsc": {
+      "parser": {
+        "syntax": "ecmascript",
+        "jsx": false,
+        "dynamicImport": true,
+        "privateMethod": true,
+        "decorators": true,
+        "topLevelAwait": true,
+        "preserveAllComments": false,
+        "target": "esnext",
+        "externalHelpers": true
+      }
+    },
+    "isModule": true
+  }
