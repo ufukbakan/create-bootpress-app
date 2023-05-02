@@ -15,7 +15,7 @@ export class BookServiceImpl {
         return this.#books;
     }
 
-    findByYear(yearInParam: string) {
+    findByYear(yearInParam?: string) {
         const year = as(yearInParam, "integer"); // throws an error if the year is not parsable to an integer
         return getOrThrow(this.#books.filter(book => book.year === year), new HttpError(404, `Couldn't find a book in year ${year}`))
     }
@@ -29,7 +29,7 @@ export class BookServiceImpl {
         return new HttpResponse(201, book);
     }
 
-    deleteByName(name: String) {
+    deleteByName(name?: string) {
         name = getOrThrow(name, new HttpError(400, "Name is required"));
         const idx = this.#books.findIndex(book => book.name === name);
         if (idx > -1) {

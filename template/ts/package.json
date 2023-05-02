@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootpress": "^8.0.1",
+    "bootpress": "^9.0.1",
     "express": "^4.18.2",
     "generic-import": "^3.0.3",
     "ts-node": "^10.9.1",

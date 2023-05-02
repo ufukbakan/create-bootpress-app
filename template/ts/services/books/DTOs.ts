@@ -1,11 +1,8 @@
 import { schema } from "bootpress/helpers";
 
-export type AddBookRequest = {
-    name: string,
-    year?: number
-}
-
 export const AddBookRequestDTO = schema({
     "name": "string",
     "year?": "integer"
 });
+
+export type AddBookRequest = typeof AddBookRequestDTO;
