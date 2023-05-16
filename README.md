@@ -9,7 +9,7 @@ npx create-bootpress-app your_project_name
 ## Optional parameters
 
 ### **-l, --language**
-*Specifies template language. Valid values are: ts, js, typescript, javascript.*
+*Specifies template language. Valid values are: ts, js, typescript or javascript*
 
 *Examples:*
 
