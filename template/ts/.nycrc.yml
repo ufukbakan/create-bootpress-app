@@ -4,4 +4,9 @@ reporter:
     # - json
     # - text-summary
 
+exclude:
+    - "configuration/**"
+    - "coverage/**"
+    - "tests/**"
+
 all: true
