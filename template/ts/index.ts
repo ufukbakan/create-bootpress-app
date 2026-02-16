@@ -13,7 +13,11 @@ app.use(express.json());
 routes.forEach(route => app.use(route.basepath, route.router));
 
 const port = Number(process.env.PORT);
-app.listen(port, () => {
+app.listen(port, (err) => {
+    if (err) {
+        log.error(err);
+        return;
+    }
     log.info(`Listening on port ${port}`);
 });
 
