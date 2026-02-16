@@ -1,4 +1,0 @@
-spec:
-  - 'tests/**/*.test.*'
-extension:
-  - 'ts'
