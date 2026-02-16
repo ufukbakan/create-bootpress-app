@@ -7,3 +7,6 @@ overrides: []
 parserOptions:
   ecmaVersion: latest
 rules: {}
+exclude: 
+  - node_modules
+  - bundle.js

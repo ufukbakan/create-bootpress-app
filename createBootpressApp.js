@@ -1,6 +1,6 @@
 const process = require("process");
 const colors = require("colors");
-const { existsSync, mkdirSync, copyFileSync, readdirSync, statSync, readFileSync, writeFileSync } = require("fs");
+const { existsSync, mkdirSync, copyFileSync, readdirSync, statSync, readFileSync, writeFileSync, renameSync } = require("fs");
 const keypress = require("keypress");
 const { join } = require("path");
 const log = console.log;
@@ -66,12 +66,9 @@ function pickLanguage({ projectName, options }) {
                     clearNprint();
                     break;
                 case "return":
-                    process.stdin.pause();
-                    createProjectTemplate({ projectName, options, lang: languages[selected] });
-                    break;
                 case "space":
                     process.stdin.pause();
-                    createProjectTemplate({ projectName, options, lang: languages[selected] });
+                    createProjectTemplate({ projectName, lang: languages[selected] });
                     break;
             }
         });
@@ -79,7 +76,7 @@ function pickLanguage({ projectName, options }) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function createProjectTemplate({ projectName, options, lang }) {
+function createProjectTemplate({ projectName, lang }) {
     lang = lang.toLowerCase();
     const projectFolder = join(process.cwd(), projectName);
     mkdirSync(projectFolder);
@@ -94,9 +91,15 @@ function createProjectTemplate({ projectName, options, lang }) {
     }
 
     copyContent(template_dir, projectFolder);
+
+    //#region POST PROCESS
     const packageJson = join(projectFolder, "package.json");
     const currentContent = readFileSync(packageJson);
     writeFileSync(packageJson, currentContent.toString("utf-8").replace("$project_name$", projectName), { encoding: "utf-8" });
+    // move file _gitignore to .gitignore
+    renameSync(join(projectFolder, "_gitignore"), join(projectFolder, ".gitignore"));
+    //#endregion
+
     log("\nYour project is created now, but dependencies is not installed. To install them:");
     log(colors.green(`cd ./${projectName}`));
     log(`${colors.red("npm install")} / ${colors.cyan("yarn")} / ${colors.yellow(`pnpm install`)}`);
